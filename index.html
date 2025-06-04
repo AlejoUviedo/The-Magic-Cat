@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Magic Cat</title> <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            background-color: #000; 
+            color: #fff;
+            font-family: 'Press Start 2P', cursive;
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
+            min-height: 100vh; 
+            overflow-x: hidden; 
+            overflow-y: auto; 
+            padding: 20px 0; 
+        }
+
+        #game-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 1280px; 
+            aspect-ratio: 1280 / 720; 
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            margin-bottom: 40px; 
+        }
+
+        #start-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            background-color: #1a1a1a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease;
+        }
+
+        #start-screen h1 { 
+            font-size: 3.5rem;
+            text-shadow: 4px 4px 0px #ff00ff;
+            margin-bottom: 40px;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        #start-button {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.5rem;
+            padding: 15px 30px;
+            background-color: #ffa500;
+            color: #000;
+            border: 4px solid #fff;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0px 6px 0px #a16800;
+        }
+
+        #start-button:hover {
+            background-color: #ffc14d;
+            transform: translateY(-2px);
+            box-shadow: 0px 8px 0px #a16800;
+        }
+        
+        #start-button:active {
+            transform: translateY(4px);
+            box-shadow: 0px 2px 0px #a16800;
+        }
+
+        #game-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #pitch-section {
+            width: 100%;
+            max-width: 1200px; 
+            padding: 40px 30px;
+            background-color: #222; 
+            color: #eee;
+            font-family: 'Press Start 2P', cursive;
+            text-align: center;
+            border-top: 6px solid #ffa500; 
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.3);
+            margin-top: 250px; 
+        }
+
+        #pitch-section h2 { /* Título principal del Pitch */
+            font-size: 2.5rem;
+            color: #ffa500; 
+            text-shadow: 3px 3px 0px #a16800; 
+            margin-bottom: 40px; /* Más espacio después del título principal */
+        }
+
+        #pitch-section h3 { /* Subtítulos para cada apartado */
+            font-size: 1.8rem; /* Ligeramente más grande */
+            color: #eee; /* Blanco para destacar sobre el naranja del h2 */
+            text-shadow: 2px 2px 0px #333;
+            margin-top: 40px; /* Espacio antes de cada nuevo apartado */
+            margin-bottom: 25px;
+            border-bottom: 2px solid #ffa500; /* Línea separadora sutil */
+            padding-bottom: 10px;
+            display: inline-block; /* Para que el borde se ajuste al texto */
+        }
+
+        #pitch-section p {
+            font-size: 1rem;
+            line-height: 1.8;
+            text-align: left; 
+            max-width: 800px; 
+            margin: 0 auto 25px auto; /* Más espacio entre párrafos */
+        }
+        
+        #pitch-section ul {
+            list-style: none; 
+            padding: 0;
+            max-width: 750px; /* Ligeramente más ancho para el texto de lista */
+            margin: 15px auto 30px auto; /* Espacio antes y después de las listas */
+            text-align: left;
+        }
+
+        #pitch-section li {
+            padding-left: 2em; /* Más espacio para el "icono" */
+            text-indent: -2em; 
+            margin-bottom: 15px;
+            font-size: 0.95rem; /* Ligeramente más grande para la lista */
+            line-height: 1.7;
+        }
+
+        #pitch-section li::before {
+            content: ">> "; 
+            color: #ffa500; 
+            padding-right: 10px; /* Más espacio después del icono */
+        }
+
+    </style>
+</head>
+<body>
+    <div id="game-wrapper">
+        <div id="start-screen">
+            <h1>The Magic Cat</h1>
+            <button id="start-button">Iniciar Juego</button>
+        </div>
+        <div id="game-container"></div>
+    </div>
+
+    <div id="pitch-section">
+        <h2>Sobre The Magic Cat</h2>
+        
+        <h3>Una Aventura Mágica te Espera</h3>
+        <p>
+            "The Magic Cat" te invita a unirte a Pixel, un intrépido felino con asombrosos poderes mágicos, en una misión crucial. El Reino Bigotudo, antaño un remanso de paz y armonía, ha caído bajo la sombra de un misterioso hechicero oscuro que ha robado los ancestrales Cristales de Poder. Sin ellos, la magia se desvanece y el caos amenaza con consumirlo todo. ¡Solo Pixel tiene el coraje y la habilidad para recuperarlos!
+        </p>
+
+        <h3>Diseño y Arte Pixelado con Encanto</h3>
+        <p>
+            Inspirado en los clásicos de la era dorada de los videojuegos de 8 y 16 bits, "The Magic Cat" presenta un mundo vibrante y detallado construido enteramente con pixel art. Cada sprite, desde el héroe hasta el más pequeño enemigo, ha sido animado con esmero para ofrecer una experiencia visual nostálgica y fluida.
+        </p>
+        <ul>
+            <li>Entornos variados y evocadores: desde bosques susurrantes y cuevas cristalinas hasta castillos tenebrosos y volcanes ardientes.</li>
+            <li>Fondos dinámicos con efecto parallax que añaden profundidad y atmósfera a cada nivel.</li>
+            <li>Una banda sonora chiptune original y efectos de sonido retro que te sumergirán por completo en la aventura.</li>
+        </ul>
+
+        <h3>Mecánicas de Juego Clásicas y Adictivas</h3>
+        <p>
+            Prepárate para una jugabilidad que combina la precisión del plataformeo clásico con la emoción del combate mágico.
+        </p>
+        <ul>
+            <li>**Plataformeo Desafiante:** Salta entre plataformas, esquiva trampas ingeniosas y explora cada rincón en busca de secretos y coleccionables.</li>
+            <li>**Combate Mágico Versátil:** Utiliza un sistema de disparo multidireccional para lanzar hechizos y derrotar a tus enemigos. ¡Apunta bien!</li>
+            <li>**Enemigos Únicos:** Enfréntate a un bestiario de criaturas mágicas y esbirros del hechicero oscuro, cada uno con sus propios patrones de ataque y debilidades.</li>
+            <li>**Modo Supervivencia:** Pon a prueba tu temple en niveles especiales donde oleadas de enemigos no dejarán de aparecer. ¿Cuánto tiempo podrás resistir?</li>
+            <li>**Batallas Épicas contra Jefes:** Desafía a poderosos guardianes y al mismísimo hechicero oscuro en combates memorables que requerirán toda tu destreza.</li>
+            <li>**Puntuación y Rejugabilidad:** Acumula puntos, descubre todos los secretos y trata de superar tus mejores marcas en cada nivel.</li>
+        </ul>
+        
+        <p>
+            ¿Tienes lo necesario para guiar a Pixel, restaurar los Cristales de Poder y salvar el Reino Bigotudo? ¡La aventura comienza ahora!
+        </p>
+    </div>
+
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.js"></script>
+    <script type="text/javascript" src="scene1.js"></script>
+    <script type="text/javascript" src="scene2.js"></script>
+    <script type="text/javascript" src="scene3.js"></script>
+    <script type="text/javascript" src="scene4.js"></script>
+    <script type="text/javascript" src="game.js"></script>
+
+    <script>
+        const startScreen = document.getElementById('start-screen');
+        const startButton = document.getElementById('start-button');
+        
+        launchGame(); // Inicia el juego en segundo plano
+
+        startButton.addEventListener('click', () => {
+            startScreen.style.opacity = '0';
+            setTimeout(() => {
+                startScreen.style.display = 'none';
+            }, 500);
+        });
+    </script>
+</body>
+</html>
